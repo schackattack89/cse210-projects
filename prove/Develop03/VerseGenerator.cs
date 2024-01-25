@@ -1,5 +1,5 @@
 public class VerseGenerator{
-    public List<string> _verses;
+    private List<string> _verses;
     /*public void ImportAllVerses()
     {
         _verses = new List<string>();

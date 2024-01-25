@@ -4,7 +4,7 @@ public class Scripture{
 
     private Reference _reference;
     private List<Word> _words = new List<Word>();
-    public bool isCompletelyHidden = false;
+    private bool isCompletelyHidden = false;
 
     public Scripture(Reference reference, string text){
         _reference = reference;
