@@ -1,0 +1,19 @@
+Encapsulation in programming is the concept of only granting access to attributes of a class through the class's own methods. Basically it means that one class or program cannot directly access another's attributes or variables. The main benefit of encapsulation is being able to segregate problem areas of code. When something in the program breaks and/or needs to be updated, only parts of the code with access need to be examined. For example, when we use a method of ClassA in ClassB and later decide that they method needs to be changed, we only have to change the code in ClassA, but the reference to the method that we used in ClassB can remain the same. More specifically in the program we just worked on for the scriputre memorizer, the Scripture class doesn't need access to the actual text of the verse to be memorized. Instead, that attribute is encapsulated within the Words class and the Scripture class interacts with it via the GetDisplayText method. In that way, encapsulation helped to protect the text of the verse from being altered by the Scripture class because it is only manipulated by methods in its own (Word) class.
+
+public class Word{
+    private string _text;
+    private bool _isHidden = false;
+    public Word(string text){
+        _text = text;
+    }
+    public string GetDisplayText(){
+        return _text;
+    }
+    public void Hide(){
+        int wordLength = _text.Length;
+        string hiddenText = "";
+        for(int i = 0; i<wordLength; i++){
+            hiddenText += "_";
+        }
+        _text = hiddenText;
+    }

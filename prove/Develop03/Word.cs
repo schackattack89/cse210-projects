@@ -6,6 +6,9 @@ public class Word{
     public Word(string text){
         _text = text;
     }
+    public string GetDisplayText(){
+        return _text;
+    }
     public void Hide(){
         int wordLength = _text.Length;
         string hiddenText = "";
@@ -22,8 +25,5 @@ public class Word{
             _isHidden = true;
         }
         return _isHidden;
-    }
-    public string GetDisplayText(){
-        return _text;
     }
 }
