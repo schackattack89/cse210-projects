@@ -1,9 +1,11 @@
 using System;
+using System.ComponentModel.Design;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        Menu programMenu = new Menu();
+        programMenu.ShowMenu();
     }
 }
