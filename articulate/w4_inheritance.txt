@@ -1,0 +1,7 @@
+Inheritance is the idea that one class can derive some of its attributes and methods from another "parent" class. This means that we can use one class of objects to help define a different object that has similar features. Inheritance in programming is analgous to hierarchies in other applications, like how all squares are rectangles or all humans are mammals, but not all rectangles are squares or not all mammals are human. 
+
+The primary benefit of inheritance in object oriented programming is that it decreases the need for extraneous code. For instance, if ClassA, ClassB, and ClassC all have Attribute1, but ClassB and ClassC also have Attribute2 and Attribute3, respectively, then we only need to write the code for Attribute1 once (in ClassA), and ClassB & ClassC can inherit Attribute1 from ClassA instead of writing it 3 times (once in each class).
+
+We used this principle of inheritance in this week's activity by defining all of the attributes (_name, _description, and _duration) and methods (StartingMessage, EndingMessage, Spinner, and Coutdown) in the parent class "Activity". Then the child classes (Breathing, Reflecting, and Listing) inherited those attributes and methods instead of needing to code the same things 3 different times in each class.
+
+In this way, inheritance not only saved us time and shortened our overall code, but it was also easier to fix and/or update these methods when needed, because we only had to change the code in one place (in the parent class). 
