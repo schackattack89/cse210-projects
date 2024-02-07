@@ -1,0 +1,5 @@
+Score|320
+Simple Goal|Give a talk|Speak during sacrament meeting|60|True
+Eternal Goal|Study scriptures|Read 1 chapter in scriptures|40
+Eternal Goal|Prayer|Pray twice in a single day|30
+Checklist Goal|Attend the temple|Performa any ordinance|50|3|150|0|False
