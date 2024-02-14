@@ -6,7 +6,7 @@ public class Calendar{
     private List<int> shortMonths = new List<int>{4,6,9,11};
     private List<int> longMonths = new List<int>{1,3,5,7,8,10,12};
     public List<Day> _days = new List<Day>();
-
+    private bool _calendarHasAppointment;
     public Calendar(int month, int year){
         _monthNum = month;
         _year = year;
@@ -17,6 +17,9 @@ public class Calendar{
 
     public int GetMonthNum(){
         return _monthNum;
+    }
+    public int GetYear(){
+        return _year;
     }
     public int HowManyDays(){
         if(shortMonths.Contains(_monthNum)){
@@ -291,5 +294,15 @@ public class Calendar{
         Console.ReadLine();
     }
 
-
+    public bool calenderHasAppointment(){
+        foreach(Day day in _days){
+            if(day.HasEvent()){
+                _calendarHasAppointment = true;
+            }
+            else{
+                _calendarHasAppointment = false;
+            }
+        }
+        return _calendarHasAppointment;
+    }
 }

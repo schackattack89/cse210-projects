@@ -7,6 +7,10 @@ class Program
         Console.Clear();
         Console.ResetColor();
 
+        List<Calendar> calendarList = new List<Calendar>();
+        Calendar baseCal = new Calendar(1, 2000);
+        calendarList.Add(baseCal);
+
         Menu programMenu = new Menu();
         programMenu.ShowMenu();
         switch (programMenu.GetMenuSelection())
@@ -17,10 +21,20 @@ class Program
                 Console.Write("Month: ");
                 string monthString = Console.ReadLine();
                 int monthNum = Convert.ToDateTime(monthString + "01, 1900").Month;
-                Calendar myCal = new Calendar(monthNum, year);
-                int monthLength = myCal.HowManyDays();
-                List<Day> dayList = myCal.PopulateDays(monthLength);
-                myCal.drawCalendar(monthLength, dayList);
+                foreach(Calendar calendarChoice in calendarList){
+                    if((calendarChoice.GetMonthNum()==monthNum)&&(calendarChoice.GetYear()==year)){
+                        calendarChoice.drawCalendar(calendarChoice.HowManyDays(), calendarChoice.PopulateDays(calendarChoice.HowManyDays()));
+                    }
+                    else{
+                        Console.WriteLine($"You have 0 appointments for {monthString} {year}");
+                        Console.WriteLine("Press ENTER to continue...");
+                        Console.ReadLine();
+                    }
+                }
+                // Calendar myCal = new Calendar(monthNum, year);
+                // int monthLength = myCal.HowManyDays();
+                // List<Day> dayList = myCal.PopulateDays(monthLength);
+                // myCal.drawCalendar(monthLength, dayList);
                 programMenu.ShowMenu();
                 break;
             case "2":
@@ -31,7 +45,9 @@ class Program
                 {
                     case "1":
                         SingleAppointment appt1 = new SingleAppointment(myAppointment.GetUserAppt());
-                        appt1.Schedule();
+                        
+                        Calendar thisCal = appt1.Schedule();
+                        calendarList.Add(thisCal);
                         programMenu.ShowMenu();
                         break;
                     case "2":

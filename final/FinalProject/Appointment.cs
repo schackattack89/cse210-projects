@@ -4,7 +4,8 @@ public class Appointment{
     public Appointment(DateTime appt){
         _apptTime = appt;
     }
-    public virtual void Schedule(){
-        
+    public virtual Calendar Schedule(){
+        Calendar apptCal = new Calendar(1,2000);
+        return apptCal;
     }
 }
