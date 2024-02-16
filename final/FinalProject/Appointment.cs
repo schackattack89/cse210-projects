@@ -1,11 +1,52 @@
 public class Appointment{
-    private DateTime _apptTime = new DateTime();
+    private DateTime _apptTime;
+    protected string _description;
+    protected List<string> _appointmentsList = new List<string>();
 
-    public Appointment(DateTime appt){
-        _apptTime = appt;
+    public Appointment(){
+        _apptTime = new DateTime();
+        _description = "";
     }
-    public virtual Calendar Schedule(){
-        Calendar apptCal = new Calendar(1,2000);
-        return apptCal;
+    public Appointment(DateTime appt, string description){
+        _apptTime = appt;
+        _description = description;
+    }
+    public virtual void GetUserAppt()
+    {
+        Console.Write("Which Year? ");
+        int yearInput = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Which Month? ");
+        string monthInputStr = Console.ReadLine();
+        int monthInputNum = Convert.ToDateTime(monthInputStr + "01, 1900").Month;
+        Console.Write("Which Day? ");
+        int dayInput = Convert.ToInt32(Console.ReadLine());
+        Console.Write("What Time (HH:MM)? ");
+        string timeInput = Console.ReadLine();
+        string[] parts = timeInput.Split(":");
+        int hourInput = Convert.ToInt32(parts[0]);
+        int minuteInput = Convert.ToInt32(parts[1]);
+        
+        DateTime userDateTime = new DateTime(yearInput, monthInputNum, dayInput, hourInput, minuteInput, 0);
+        _apptTime = userDateTime;
+        
+        Console.Write("Description: ");
+        _description = Console.ReadLine();
+    }
+    public virtual Day Schedule(Calendar cal){
+        Day apptDay = new Day(2);
+        return apptDay;
+    }
+
+    public string GetDateString(){
+        return $"{_apptTime.Month}/{_apptTime.Day}/{_apptTime.Year} @ {_apptTime.ToString("hh:mm tt")}";
+    }
+     public string GetDescription(){
+        return _description;
+    }
+    public DateTime GetDate(){
+        return _apptTime;
+    }
+    public int GetDay(){
+        return _apptTime.Day;
     }
 }

@@ -7,6 +7,7 @@ public class Calendar{
     private List<int> longMonths = new List<int>{1,3,5,7,8,10,12};
     public List<Day> _days = new List<Day>();
     private bool _calendarHasAppointment;
+    
     public Calendar(int month, int year){
         _monthNum = month;
         _year = year;
@@ -36,15 +37,30 @@ public class Calendar{
         }
         return _numOfDays;
     }
+    public bool CalendarExists(int month, int year){
+        if((_monthNum==month)&&(_year==year)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public List<Day> PopulateDays(int numOfDays){
          for(int i = 1; i<=numOfDays; i++){
             Day currentDay = new Day(i);
             _days.Add(currentDay);
         }
+        Day placeholder = new Day(99);
+        _days.Add(placeholder);
         return _days;
     }
     public void drawCalendar(int daysCount, List<Day> days){
+        Console.Clear();
+        Console.Write("\t\t     ");
+        Console.BackgroundColor = ConsoleColor.Cyan;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.WriteLine(ShowCalendarTitle());
         Console.ForegroundColor = ConsoleColor.Black;
         Console.BackgroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Su\tM\tT\tW\tR\tF\tS ");
@@ -55,7 +71,7 @@ public class Calendar{
                     Console.Write(" "); days[0].DisplayDay(); Console.Write("\t"); days[1].DisplayDay(); Console.Write("\t"); days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay(); Console.Write("\t"); days[4].DisplayDay(); Console.Write("\t"); days[5].DisplayDay(); Console.Write("\t"); days[6].DisplayDay();
                     Console.Write("\n "); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay();
                     Console.Write("\n "); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay();
-                    Console.Write("\n "); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n "); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "monday":
@@ -63,7 +79,7 @@ public class Calendar{
                     Console.Write("\n ");days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay();
                     Console.Write("\n ");days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay();
                     Console.Write("\n ");days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay();
-                    Console.Write("\n ");days[27].DisplayDay();
+                    Console.Write("\n ");days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "tuesday":
@@ -71,7 +87,7 @@ public class Calendar{
                     Console.Write("\n ");days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay();
                     Console.Write("\n ");days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay();
                     Console.Write("\n ");days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay();
-                    Console.Write("\n ");days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n ");days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "wednesday":
@@ -79,7 +95,7 @@ public class Calendar{
                     Console.Write("\n ");days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay();
                     Console.Write("\n ");days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay();
                     Console.Write("\n ");days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay();
-                    Console.Write("\n ");days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n ");days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "thursday":
@@ -87,7 +103,7 @@ public class Calendar{
                     Console.Write("\n ");days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay();
                     Console.Write("\n ");days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay();
                     Console.Write("\n ");days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay();
-                    Console.Write("\n ");days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n ");days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "friday":
@@ -95,7 +111,7 @@ public class Calendar{
                     Console.Write("\n ");days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();
                     Console.Write("\n ");days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay();
                     Console.Write("\n ");days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay();
-                    Console.Write("\n ");days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n ");days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "saturday":
@@ -103,7 +119,7 @@ public class Calendar{
                     Console.Write("\n ");days[1].DisplayDay(); Console.Write("\t"); days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();
                     Console.Write("\n ");days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay();
                     Console.Write("\n ");days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay();
-                    Console.Write("\n ");days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
+                    Console.Write("\n ");days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); days[28].DisplayDay();
                     Console.WriteLine();
                     break;
             }
@@ -115,7 +131,7 @@ public class Calendar{
                     Console.Write("\n "); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay();
                     Console.Write("\n "); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay();
                     Console.Write("\n "); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
-                    Console.Write("\n "); days[28].DisplayDay();
+                    Console.Write("\n "); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "monday":
@@ -123,7 +139,7 @@ public class Calendar{
                     Console.Write("\n "); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay();
                     Console.Write("\n "); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay();
                     Console.Write("\n "); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay();
-                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "tuesday":
@@ -131,7 +147,7 @@ public class Calendar{
                     Console.Write("\n "); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay();
                     Console.Write("\n "); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay();
                     Console.Write("\n "); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay();
-                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "wednesday":
@@ -139,7 +155,7 @@ public class Calendar{
                     Console.Write("\n "); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay();
                     Console.Write("\n "); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay();
                     Console.Write("\n "); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay();
-                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "thursday":
@@ -147,7 +163,7 @@ public class Calendar{
                     Console.Write("\n "); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay();
                     Console.Write("\n "); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay();
                     Console.Write("\n "); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay();
-                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "friday":
@@ -155,7 +171,7 @@ public class Calendar{
                     Console.Write("\n "); days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();
                     Console.Write("\n "); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay();
                     Console.Write("\n "); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay();
-                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "saturday":
@@ -163,7 +179,7 @@ public class Calendar{
                     Console.Write("\n "); days[1].DisplayDay(); Console.Write("\t"); days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();
                     Console.Write("\n "); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay();
                     Console.Write("\n "); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay();
-                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
+                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); days[29].DisplayDay();
                     Console.WriteLine();
                     break;
             }
@@ -175,7 +191,7 @@ public class Calendar{
                     Console.Write("\n "); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay();
                     Console.Write("\n "); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay();
                     Console.Write("\n "); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
-                    Console.Write("\n "); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "monday":
@@ -183,7 +199,7 @@ public class Calendar{
                     Console.Write("\n "); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay();
                     Console.Write("\n "); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay();
                     Console.Write("\n "); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay();
-                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "tuesday":
@@ -191,7 +207,7 @@ public class Calendar{
                     Console.Write("\n "); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay();
                     Console.Write("\n "); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay();
                     Console.Write("\n "); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay();
-                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "wednesday":
@@ -199,7 +215,7 @@ public class Calendar{
                     Console.Write("\n "); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay();
                     Console.Write("\n "); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay();
                     Console.Write("\n "); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay();
-                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "thursday":
@@ -207,7 +223,7 @@ public class Calendar{
                     Console.Write("\n "); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay();
                     Console.Write("\n "); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay();
                     Console.Write("\n "); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay();
-                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "friday":
@@ -215,7 +231,7 @@ public class Calendar{
                     Console.Write("\n "); days[2].DisplayDay(); Console.Write("\t"); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();
                     Console.Write("\n "); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay();
                     Console.Write("\n "); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay();
-                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
+                    Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "saturday":
@@ -224,7 +240,7 @@ public class Calendar{
                     Console.Write("\n "); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay();
                     Console.Write("\n "); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay();
                     Console.Write("\n "); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
-                    Console.Write("\n "); days[29].DisplayDay();
+                    Console.Write("\n "); days[29].DisplayDay(); days[30].DisplayDay();
                     Console.WriteLine();
                     break;
             }
@@ -236,7 +252,7 @@ public class Calendar{
                     Console.Write("\n "); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay();
                     Console.Write("\n "); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay();
                     Console.Write("\n "); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay();
-                    Console.Write("\n "); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "monday":
@@ -244,7 +260,7 @@ public class Calendar{
                     Console.Write("\n "); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay();
                     Console.Write("\n "); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay();
                     Console.Write("\n "); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay();
-                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "tuesday":
@@ -252,7 +268,7 @@ public class Calendar{
                     Console.Write("\n "); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay();
                     Console.Write("\n "); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay();
                     Console.Write("\n "); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay();
-                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "wednesday":
@@ -260,7 +276,7 @@ public class Calendar{
                     Console.Write("\n "); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay();
                     Console.Write("\n "); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay();
                     Console.Write("\n "); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay();
-                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "thursday":
@@ -268,7 +284,7 @@ public class Calendar{
                     Console.Write("\n "); days[3].DisplayDay();  Console.Write("\t"); days[4].DisplayDay();  Console.Write("\t"); days[5].DisplayDay();  Console.Write("\t"); days[6].DisplayDay();  Console.Write("\t"); days[7].DisplayDay();  Console.Write("\t"); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay();
                     Console.Write("\n "); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay();
                     Console.Write("\n "); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay();
-                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "friday":
@@ -277,7 +293,7 @@ public class Calendar{
                     Console.Write("\n "); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay(); Console.Write("\t"); days[15].DisplayDay();
                     Console.Write("\n "); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay(); Console.Write("\t"); days[22].DisplayDay();
                     Console.Write("\n "); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay(); Console.Write("\t"); days[29].DisplayDay();
-                    Console.Write("\n "); days[30].DisplayDay();
+                    Console.Write("\n "); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
                 case "saturday":
@@ -286,11 +302,21 @@ public class Calendar{
                     Console.Write("\n "); days[8].DisplayDay();  Console.Write("\t"); days[9].DisplayDay(); Console.Write("\t"); days[10].DisplayDay(); Console.Write("\t"); days[11].DisplayDay(); Console.Write("\t"); days[12].DisplayDay(); Console.Write("\t"); days[13].DisplayDay(); Console.Write("\t"); days[14].DisplayDay();
                     Console.Write("\n "); days[15].DisplayDay(); Console.Write("\t"); days[16].DisplayDay(); Console.Write("\t"); days[17].DisplayDay(); Console.Write("\t"); days[18].DisplayDay(); Console.Write("\t"); days[19].DisplayDay(); Console.Write("\t"); days[20].DisplayDay(); Console.Write("\t"); days[21].DisplayDay();
                     Console.Write("\n "); days[22].DisplayDay(); Console.Write("\t"); days[23].DisplayDay(); Console.Write("\t"); days[24].DisplayDay(); Console.Write("\t"); days[25].DisplayDay(); Console.Write("\t"); days[26].DisplayDay(); Console.Write("\t"); days[27].DisplayDay(); Console.Write("\t"); days[28].DisplayDay();
-                    Console.Write("\n "); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay();
+                    Console.Write("\n "); days[29].DisplayDay();Console.Write("\t"); days[30].DisplayDay(); days[31].DisplayDay();
                     Console.WriteLine();
                     break;
             }
         }
+        Console.Write("Would you like to view details of these appointments? (Y/N)... ");
+        string viewDetails = Console.ReadLine().ToLower();
+        if((viewDetails == "y")||(viewDetails == "yes")){
+            foreach(Day day in _days){
+                if(day.HasEvent()){
+                    day.ListAppointments();
+                }
+            }
+        }
+        Console.Write("Press ENTER to return to main menu...");
         Console.ReadLine();
     }
 
@@ -304,5 +330,9 @@ public class Calendar{
             }
         }
         return _calendarHasAppointment;
+    }
+    public string ShowCalendarTitle(){
+        DateTime date = new DateTime(_year, _monthNum, 1);
+        return $"{date.ToString("MMMM")}/{date.ToString("yyyy")}";
     }
 }

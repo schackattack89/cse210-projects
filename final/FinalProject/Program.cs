@@ -13,72 +13,132 @@ class Program
 
         Menu programMenu = new Menu();
         programMenu.ShowMenu();
-        switch (programMenu.GetMenuSelection())
+        while (programMenu.GetMenuSelection() != 5)
         {
-            case "1":
+            if (programMenu.GetMenuSelection() == 1)
+            {
                 Console.Write("Year: ");
                 int year = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Month: ");
                 string monthString = Console.ReadLine();
                 int monthNum = Convert.ToDateTime(monthString + "01, 1900").Month;
-                foreach(Calendar calendarChoice in calendarList){
-                    if((calendarChoice.GetMonthNum()==monthNum)&&(calendarChoice.GetYear()==year)){
+                Calendar testCal = new Calendar(monthNum, year);
+                int noMatch = 0;
+                foreach (Calendar calendarChoice in calendarList)
+                {
+                    if ((calendarChoice.GetMonthNum() == monthNum) && (calendarChoice.GetYear() == year))
+                    {
                         calendarChoice.drawCalendar(calendarChoice.HowManyDays(), calendarChoice.PopulateDays(calendarChoice.HowManyDays()));
                     }
-                    else{
-                        Console.WriteLine($"You have 0 appointments for {monthString} {year}");
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ReadLine();
+                    else
+                    {
+                       noMatch ++;
                     }
+                }
+                if(noMatch == calendarList.Count){
+                    Console.WriteLine($"You have 0 appointments for {monthString} {year}");
+                    Console.WriteLine("Press ENTER to continue...");
+                    Console.ReadLine();
                 }
                 // Calendar myCal = new Calendar(monthNum, year);
                 // int monthLength = myCal.HowManyDays();
                 // List<Day> dayList = myCal.PopulateDays(monthLength);
                 // myCal.drawCalendar(monthLength, dayList);
-                programMenu.ShowMenu();
-                break;
-            case "2":
-                Menu apptsMenu = new Menu("Single Appointment", "Weekly Appointment", "Monthly Appointment");
-                ApptScheduler myAppointment = new ApptScheduler();
-                apptsMenu.ShowMenu();
-                switch(apptsMenu.GetMenuSelection())
-                {
-                    case "1":
-                        SingleAppointment appt1 = new SingleAppointment(myAppointment.GetUserAppt());
-                        
-                        Calendar thisCal = appt1.Schedule();
-                        calendarList.Add(thisCal);
-                        programMenu.ShowMenu();
-                        break;
-                    case "2":
-                        WeeklyAppointment appt2 = new WeeklyAppointment(myAppointment.GetUserAppt());
-                        appt2.Schedule();
-                        programMenu.ShowMenu();
-                        break;
-                    case "3":
-                        MonthlyAppointment appt3 = new MonthlyAppointment(myAppointment.GetUserAppt());
-                        appt3.Schedule();
-                        programMenu.ShowMenu();
-                        break;
-                    default:
-                        programMenu.ShowMenu();
-                        break;;
-                }
-                break;
-            case "3":
-                Console.WriteLine("HELLO!!!!");
-                Console.ReadLine();
-                // programMenu.SetMenuCounter(1);
-                // programMenu.ShowMenu();
-                break;
-            case "4":
                 programMenu.SetMenuCounter(1);
                 programMenu.ShowMenu();
-                break;
-            default:
-                System.Environment.Exit(1);
-                break;
-        }
+            }
+            else if (programMenu.GetMenuSelection() == 2)
+            {
+                Menu apptsMenu = new Menu("Single Appointment", "Weekly Appointment", "Monthly Appointment");
+                // ApptScheduler myAppointment = new ApptScheduler();
+                
+                apptsMenu.ShowMenu();
+                if(apptsMenu.GetMenuSelection()==1){
+                    SingleAppointment myAppt = new SingleAppointment();
+                    
+                    myAppt.GetUserAppt();
+                    
+                    int myApptMonth = myAppt.GetDate().Month;
+                    int myApptYear = myAppt.GetDate().Year;
+                    
+                    bool addCal = false;
+                    Calendar calToAdd = new Calendar(myApptMonth, myApptYear);
 
+                    foreach(Calendar cal in calendarList){
+                        if(cal.CalendarExists(myApptMonth, myApptYear)){
+                            cal._days[myAppt.GetDate().Day-1] = myAppt.Schedule(cal);
+                            addCal = true;
+                        }
+                        else{
+                            calToAdd._days = calToAdd.PopulateDays(calToAdd.HowManyDays());
+                            calToAdd._days[myAppt.GetDate().Day-1] = myAppt.Schedule(calToAdd);
+                        }
+                    }
+                    if(!addCal){
+                        calendarList.Add(calToAdd);
+                    }
+                    
+                    programMenu.SetMenuCounter(1);
+                    programMenu.ShowMenu();
+                }
+                else if(apptsMenu.GetMenuSelection()== 2){
+                    WeeklyAppointment wkAppt = new WeeklyAppointment();
+                    wkAppt.GetUserAppt();
+                    
+                    int myApptMonth = wkAppt.GetDate().Month;
+                    int myApptYear = wkAppt.GetDate().Year;
+                    
+                    bool addCal = false;
+                    Calendar calToAdd = new Calendar(myApptMonth, myApptYear);
+
+                    foreach(Calendar cal in calendarList){
+                        if(cal.CalendarExists(myApptMonth, myApptYear)){
+                            cal._days[wkAppt.GetDate().Day-1] = wkAppt.Schedule(cal);
+                            addCal = true;
+                        }
+                        else{
+                            calToAdd._days = calToAdd.PopulateDays(calToAdd.HowManyDays());
+                            calToAdd._days[wkAppt.GetDate().Day-1] = wkAppt.Schedule(calToAdd);
+                        }
+                    }
+                    if(!addCal){
+                        calendarList.Add(calToAdd);
+                    }
+                    
+                    programMenu.SetMenuCounter(1);
+                    programMenu.ShowMenu();
+                }
+                else if(apptsMenu.GetMenuSelection()==3){
+                    MonthlyAppointment monAppt = new MonthlyAppointment();
+                    monAppt.GetUserAppt();
+
+                    //monAppt.Schedule();
+                    programMenu.SetMenuCounter(1);
+                    programMenu.ShowMenu();
+                }
+                else{
+                        programMenu.SetMenuCounter(1);
+                        programMenu.ShowMenu();
+                }
+            }
+            else if (programMenu.GetMenuSelection() ==3)
+            {
+                Console.WriteLine("HELLO!!!!");
+                Console.ReadLine();
+                programMenu.SetMenuCounter(1);
+                programMenu.ShowMenu();
+            }
+            else if (programMenu.GetMenuSelection() == 4)
+            {
+                programMenu.SetMenuCounter(1);
+                programMenu.ShowMenu();
+            }
+            else
+            {
+                System.Environment.Exit(1);
+            }
+
+        }
     }
+    //public 
 }

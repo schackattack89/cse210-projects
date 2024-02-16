@@ -1,7 +1,7 @@
 public class Menu{
     private List<string> _menuItems = new List<string>();
     private int _menuCounter = 1;
-    private string _menuSelction = "";
+    private int _menuSelction = 0;
     public Menu(){
         _menuItems.Add("View A Monthly Calendar");
         _menuItems.Add("Add Appointment");
@@ -22,12 +22,11 @@ public class Menu{
             Console.WriteLine($"{_menuCounter}. {item}");
             _menuCounter++;
         }
-        _menuCounter = 1;
+        Console.Write("Select a choice from the menu: ");
+        _menuSelction = Convert.ToInt32(Console.ReadLine());
     }
 
-    public string GetMenuSelection(){
-        Console.Write("Select a choice from the menu: ");
-        _menuSelction = Console.ReadLine();
+    public int GetMenuSelection(){
         return _menuSelction;
     }
     public void SetMenuCounter(int i){

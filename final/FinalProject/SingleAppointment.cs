@@ -1,26 +1,39 @@
 public class SingleAppointment : Appointment
 {
-    
-    private DateTime _apptTime;
 
-    public SingleAppointment(DateTime appt):base(appt){
-        _apptTime = appt;
-    }
-    public override Calendar Schedule()
+    private DateTime _apptTime;
+    private string _description;
+
+    public SingleAppointment()
     {
-        int year = _apptTime.Year;
-        int month = _apptTime.Month;
-        int day = _apptTime.Day;
-        Calendar apptCal = new Calendar(month, year);
-        apptCal.PopulateDays(apptCal.HowManyDays());
-        if(apptCal._days[day].HasEvent()){
-            Console.WriteLine("You already have something scheduled at that time.");
-            Console.WriteLine("Press ENTER to continue...");
-            Console.ReadLine();
-        }
-        else{
-            apptCal._days[day].AddAppointment(_apptTime);
-        }
-        return apptCal;
+        _apptTime = new DateTime();
+        _description = "";
+
     }
+    public SingleAppointment(DateTime appt, string desc) : base(appt, desc)
+    {
+        _apptTime = appt;
+        _description = desc;
+    }
+    public override Day Schedule(Calendar currentCal)
+    {
+        bool apptExists = false;
+        foreach (Appointment currentAppt in currentCal._days[GetDay()-1]._appointments)
+        {
+            if (currentAppt.GetDateString() == GetDateString())
+            {
+                Console.WriteLine($"ERROR: You already have an appointment scheduled for {GetDateString()}");
+                Console.Write("Press ENTER to return to main menu...");
+                Console.ReadLine();
+                apptExists = true;
+            }
+        }
+        if (!apptExists)
+        {
+            currentCal._days[GetDay()-1].AddAppointment(GetDate(), GetDescription());
+            currentCal._days[GetDay()-1].SetHasEvent(true);
+        }
+        return currentCal._days[GetDay()-1];
+    }
+
 }

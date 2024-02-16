@@ -1,12 +1,18 @@
 public class MonthlyAppointment : Appointment{
 
     private DateTime _apptTime;
+    private string _description;
 
-    public MonthlyAppointment(DateTime appt):base(appt){
+    public MonthlyAppointment(){}
+    public MonthlyAppointment(DateTime appt, string desc):base(appt, desc){
         _apptTime = appt;
     }
-    public override Calendar Schedule(){
-        Calendar apptCal = new Calendar(1,2000);
-        return apptCal;        
+
+    public override void GetUserAppt(){
+        
+    }
+    public override Day Schedule(Calendar currentCal){
+        Day apptDay = new Day(1);
+        return apptDay;      
     }
 }
