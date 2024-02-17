@@ -32,9 +32,24 @@ public class Appointment{
         Console.Write("Description: ");
         _description = Console.ReadLine();
     }
-    public virtual Day Schedule(Calendar cal){
-        Day apptDay = new Day(2);
-        return apptDay;
+    public virtual Day Schedule(Calendar currentCal){
+        bool apptExists = false;
+        foreach (Appointment currentAppt in currentCal._days[GetDay()-1]._appointments)
+        {
+            if (currentAppt.GetDateString() == GetDateString())
+            {
+                // Console.WriteLine($"ERROR: You already have an appointment scheduled for {GetDateString()}");
+                // Console.Write("Press ENTER to return to main menu...");
+                // Console.ReadLine();
+                apptExists = true;
+            }
+        }
+        if (!apptExists)
+        {
+            currentCal._days[GetDay()-1].AddAppointment(GetDate(), GetDescription());
+            currentCal._days[GetDay()-1].SetHasEvent(true);
+        }
+        return currentCal._days[GetDay()-1];
     }
 
     public string GetDateString(){

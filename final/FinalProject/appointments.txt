@@ -1,9 +1,29 @@
-3/19/2024 @ 06:30 PM|bowling
-3/5/2024 @ 09:00 PM|movies
-3/1/2024 @ 09:00 AM|school
-3/8/2024 @ 09:00 AM|school
-3/15/2024 @ 09:00 AM|school
-3/22/2024 @ 09:00 AM|school
-3/29/2024 @ 09:00 AM|school
-3/11/2024 @ 01:00 PM|haircut
-4/11/2024 @ 01:00 PM|haircut
+3/11/2024 @ 01:00 PM`lunch
+3/18/2024 @ 01:00 PM`lunch
+3/25/2024 @ 01:00 PM`lunch
+4/1/2024 @ 01:00 PM`lunch
+4/8/2024 @ 01:00 PM`lunch
+4/15/2024 @ 01:00 PM`lunch
+3/7/2024 @ 09:00 AM`school
+3/11/2024 @ 01:00 PM`haircut
+3/18/2024 @ 01:00 PM`haircut
+3/25/2024 @ 01:00 PM`haircut
+4/1/2024 @ 01:00 PM`haircut
+4/8/2024 @ 01:00 PM`haircut
+4/15/2024 @ 01:00 PM`haircut
+3/19/2024 @ 05:00 PM`dinner
+3/26/2024 @ 05:00 PM`dinner
+4/2/2024 @ 05:00 PM`dinner
+4/9/2024 @ 05:00 PM`dinner
+4/16/2024 @ 05:00 PM`dinner
+4/23/2024 @ 05:00 PM`dinner
+4/30/2024 @ 05:00 PM`dinner
+2/10/2024 @ 08:00 PM`bowling league
+3/10/2024 @ 08:00 PM`bowling league
+4/10/2024 @ 08:00 PM`bowling league
+5/10/2024 @ 08:00 PM`bowling league
+Jan|1|2000|31
+Mar|3|2024|31
+Apr|4|2024|30
+Feb|2|2024|29
+May|5|2024|31

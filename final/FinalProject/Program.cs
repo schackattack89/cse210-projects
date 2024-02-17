@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 class Program
 {
@@ -146,8 +147,12 @@ class Program
                 string file = Console.ReadLine();
                 using(StreamWriter outputFile = new StreamWriter(file)){
                     foreach(Appointment appt in appointmentList){
-                        outputFile.WriteLine($"{appt.GetDateString()}|{appt.GetDescription()}");
+                        outputFile.WriteLine($"{appt.GetDateString()}`{appt.GetDescription()}");
                     }          
+                    foreach(Calendar cal in calendarList){
+                        string monthName = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedMonthName(cal.GetMonthNum());
+                        outputFile.WriteLine($"{monthName}|{cal.GetMonthNum()}|{cal.GetYear()}|{cal.HowManyDays()}");
+                    }
                 }
                 Console.WriteLine($"Current active calendars have been saved to file {file}.\nPress ENTER to return to main menu...");
                 Console.ReadLine();
@@ -156,6 +161,44 @@ class Program
             }
             else if (programMenu.GetMenuSelection() == 4)
             {
+                Console.Write("Enter filename to load: ");
+                string file = Console.ReadLine();
+                string filename = file;
+                string [] lines = System.IO.File.ReadAllLines(filename);
+                foreach(string line in lines){
+                    if(line.Contains('|')){
+                        string [] calParts = line.Split("|");
+                        Calendar loadedCal = new Calendar(Convert.ToInt32(calParts[1]), Convert.ToInt32(calParts[2]));
+                        loadedCal.PopulateDays(Convert.ToInt32(calParts[3]));
+                        calendarList.Add(loadedCal);
+                    }
+                    else{
+                        string [] apptParts = line.Split('`');
+                        string description = apptParts[1];
+                        string [] dateTimeParts = apptParts[0].Split(" @ ");
+                        string [] timePart = dateTimeParts[1].Split(':');
+                        int hour = Convert.ToInt32(timePart[0]);
+                        string [] minuteAmPm = timePart[1].Split(" ");
+                        int minute = Convert.ToInt32(minuteAmPm[0]);
+                        if(minuteAmPm[1]=="PM"){
+                            hour+=12;
+                        }
+                        string [] dateParts = dateTimeParts[0].Split('/');
+                        int month = Convert.ToInt32(dateParts[0]);
+                        int day = Convert.ToInt32(dateParts[1]);
+                        int year = Convert.ToInt32(dateParts[2]);
+                        DateTime loadedDate = new DateTime(year, month, day, hour, minute, 0);
+                        Appointment loadedAppt = new Appointment(loadedDate, description);
+                        appointmentList.Add(loadedAppt);
+                    }
+                }
+                foreach(Calendar cal in calendarList){
+                    foreach(Appointment appt in appointmentList){
+                        if(cal.GetMonthNum()==appt.GetDate().Month){
+                            appt.Schedule(cal);
+                        }
+                    }
+                }
                 programMenu.SetMenuCounter(1);
                 programMenu.ShowMenu();
             }
@@ -166,5 +209,5 @@ class Program
 
         }
     }
-    //public 
+     
 }
