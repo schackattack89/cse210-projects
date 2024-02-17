@@ -2,7 +2,6 @@ public class SingleAppointment : Appointment
 {
 
     private DateTime _apptTime;
-    private string _description;
 
     public SingleAppointment()
     {
@@ -22,9 +21,9 @@ public class SingleAppointment : Appointment
         {
             if (currentAppt.GetDateString() == GetDateString())
             {
-                Console.WriteLine($"ERROR: You already have an appointment scheduled for {GetDateString()}");
-                Console.Write("Press ENTER to return to main menu...");
-                Console.ReadLine();
+                // Console.WriteLine($"ERROR: You already have an appointment scheduled for {GetDateString()}");
+                // Console.Write("Press ENTER to return to main menu...");
+                // Console.ReadLine();
                 apptExists = true;
             }
         }

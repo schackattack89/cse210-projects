@@ -49,4 +49,13 @@ public class Appointment{
     public int GetDay(){
         return _apptTime.Day;
     }
+    public void SaveToFile(string file, List<Appointment> appointments)
+    {
+        string fileName = file;
+        using(StreamWriter outputFile = new StreamWriter(fileName)){
+            foreach(Appointment appt in appointments){
+                outputFile.WriteLine($"{appt.GetDateString()}|{appt.GetDescription()}");
+            }          
+        }
+    }
 }
